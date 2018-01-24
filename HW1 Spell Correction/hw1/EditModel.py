@@ -62,16 +62,14 @@ class EditModel(object):
     # Tip: you might find EditModel.ALPHABET helpful
     # Tip: If inserting the letter 'a' as the second character in the word 'test', the corrupt
     #      signal is 't' and the correct signal is 'ta'. See slide 17 of the noisy channel model.
-    word = "<" + word # append start token
+    word = "<" + word
     ret = []
-    for i in xrange(1, len(word)):
-      #The corrupted signal are this character and the character preceding
-      corruptLetters = word[i-1:i+1] 
-      #The correct signal is just the preceding character
-      correctLetters = corruptLetters[:-1]
-
-      #The corrected word deletes character i (and lacks the start symbol)
-      correction = "%s%s" % (word[1:i], word[i+1:])
+    alphabets = self.ALPHABET
+    for i in xrange(0, len(word)):
+      for j in xrange(0, len(alphabets)):
+        corruptLetters = word[i]
+        correctLetters = word[i] + alphabets[j]
+        correction = word[:i] + alphabets[j] + word[i:]
       ret.append(Edit(correction, corruptLetters, correctLetters))
       
     return ret
