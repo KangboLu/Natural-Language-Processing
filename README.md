@@ -9,5 +9,5 @@ ECS-189 Taught by Zhou Yu in UC Davis
   2. Bigram Model 
   3. Smooth Unigram Model 
   4. Smooth Bigram Model
-  5. Backoff Model
+  5. Backoff Model: implemented with unsmoothed bigram and smoothed unigram
   6. Custom Model: Not decided Yet
