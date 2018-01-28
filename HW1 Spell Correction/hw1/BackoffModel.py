@@ -24,22 +24,27 @@ class BackoffModel:
     # TODO your code here
     # Tip: To get words from the corpus, try
     for sentence in corpus.corpus:
-      for datumIndex in xrange(1, len(sentence.data)):
+      for datumIndex in xrange(0, len(sentence.data)):
         datum = sentence.data
-        bigram = datum[datumIndex].word + datum[datumIndex-1].word # get bigram string
-        previousWord = datum[datumIndex-1].word # get previous word
+
+        # counting unigram and store them in dictionary
         unigram = datum[datumIndex].word # get unigram string
-        self.bigramCounts[bigram] += 1 # count number of bigram
-        self.previousCounts[previousWord] += 1 # count number of previous word
         self.unigramCounts[unigram] +=1 # count number of unigram
         self.totalCount += 1 # total count for unigram model
+
+        # counting bigram and store them in dictionary
+        if datumIndex > 0:
+          bigram = datum[datumIndex].word + datum[datumIndex-1].word # get bigram string
+          previousWord = datum[datumIndex-1].word # get previous word
+          self.bigramCounts[bigram] += 1 # count number of bigram
+          self.previousCounts[previousWord] += 1 # count number of previous word
 
   def score(self, sentence):
     """ Takes a list of strings as argument and returns the log-probability of the 
         sentence using your language model. Use whatever data you computed in train() here.
     """
     # TODO your code here
-    score = 0.0 # initialize score
+    score = 0.0 # initialize score for spell correction
 
     # calculate not seen unigram for laplace smoothing
     for word in sentence:
@@ -47,16 +52,20 @@ class BackoffModel:
         self.uniZeroCount += 1
 
     # calculating score with backoff model
-    for wordIndex in xrange(1, len(sentence)):
-      bigramCount = self.bigramCounts[sentence[wordIndex] + sentence[wordIndex-1]] # count of bigram
-      previousCount = self.previousCounts[sentence[wordIndex-1]] # count of previous word
+    for wordIndex in xrange(0, len(sentence)):
       unigramCount = self.unigramCounts[sentence[wordIndex]] # count of unigram
 
-      # apply bigram model
+      # conditioning which index range to use bigram
+      bigramCount = 0
+      if wordIndex > 0:
+        bigramCount = self.bigramCounts[sentence[wordIndex] + sentence[wordIndex-1]] # count of bigram
+        previousCount = self.previousCounts[sentence[wordIndex-1]] # count of previous word
+
+      # apply unsmooth bigram model
       if bigramCount and previousCount > 0:
         score += math.log(bigramCount)
         score -= math.log(previousCount)
-      else: # bigram not seen, apply unigram model
+      else: # bigram not seen, apply smooth unigram model
         score += math.log(unigramCount+1)
         score -= math.log(self.totalCount + self.uniZeroCount)
         score += math.log(0.7)
