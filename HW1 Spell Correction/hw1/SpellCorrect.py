@@ -34,24 +34,20 @@ class SpellCorrect:
       return []
 
     bestSentence = sentence[:] # get a copy of sentence for comparison
-    bestScore = float('-inf') # bestScore for comparing sentence score
-    # bestScore = self.languageModel.score(bestSentence) # get original language model score
+    bestScore = float('-inf')  # bestScore for comparing sentence score
+
     for i in xrange(1, len(sentence) - 1): # ignore <s> and </s>
-      # TODO: select the maximum probability sentence here, according to the noisy channel model.
-      # Tip: self.editModel.editProbabilities(word) gives edits and log-probabilities according to your edit model.
-      #      You should iterate through these values instead of enumerating all edits.
-      # Tip: self.languageModel.score(trialSentence) gives log-probability of a sentence
       editProb = self.editModel.editProbabilities(sentence[i]) # list of canditate word
 
       # iterate each of returned candidate edits for current word in the sentence
-      for j in xrange(0, len(editProb)):  # loop through each candidate word
-        trialSentence = sentence[:]       # make a copy of original sentence
-        trialSentence[i] = editProb[j][0] # taking a word out and replacing it with a candidate edit
+      for j in xrange(0, len(editProb)):    # loop through each candidate word
+        tempSentence = list(sentence)       # make a copy of original sentence
+        tempSentence[i] = editProb[j][0]    # taking a word out and replacing it with a candidate edit
 
         # calculate newScore and compare newScore with bestScore to find bestSentence
-        newScore = self.languageModel.score(trialSentence) + editProb[j][1]
+        newScore = self.languageModel.score(tempSentence) + editProb[j][1]
         if newScore > bestScore:
-          bestSentence = trialSentence
+          bestSentence = tempSentence
           bestScore = newScore
     return bestSentence
 
@@ -86,23 +82,25 @@ def main():
   """Trains all of the language models and tests them on the dev data. Change devPath if you
      wish to do things like test on the training data."""
 
+  # load training data
   trainPath = 'data/tagged-train.dat'
   trainingCorpus = Corpus(trainPath)
 
+  # load dev data
   devPath = 'data/tagged-dev.dat'
   devCorpus = Corpus(devPath)
 
-  # print 'Unigram Language Model: ' 
-  # unigramLM = UnigramModel(trainingCorpus)
-  # unigramSpell = SpellCorrect(unigramLM, trainingCorpus)
-  # unigramOutcome = unigramSpell.evaluate(devCorpus)
-  # print str(unigramOutcome)
+  print 'Unigram Language Model: ' 
+  unigramLM = UnigramModel(trainingCorpus)
+  unigramSpell = SpellCorrect(unigramLM, trainingCorpus)
+  unigramOutcome = unigramSpell.evaluate(devCorpus)
+  print str(unigramOutcome)
 
-  # print 'Uniform Language Model: '
-  # uniformLM = UniformModel(trainingCorpus)
-  # uniformSpell = SpellCorrect(uniformLM, trainingCorpus)
-  # uniformOutcome = uniformSpell.evaluate(devCorpus) 
-  # print str(uniformOutcome)
+  print 'Uniform Language Model: '
+  uniformLM = UniformModel(trainingCorpus)
+  uniformSpell = SpellCorrect(uniformLM, trainingCorpus)
+  uniformOutcome = uniformSpell.evaluate(devCorpus) 
+  print str(uniformOutcome)
 
   print 'Smooth Unigram Language Model: ' 
   smoothUnigramLM = SmoothUnigramModel(trainingCorpus)
@@ -110,23 +108,23 @@ def main():
   smoothUnigramOutcome = smoothUnigramSpell.evaluate(devCorpus)
   print str(smoothUnigramOutcome)
 
-  # print 'Smooth Bigram Language Model: '
-  # smoothBigramLM = SmoothBigramModel(trainingCorpus)
-  # smoothBigramSpell = SpellCorrect(smoothBigramLM, trainingCorpus)
-  # smoothBigramOutcome = smoothBigramSpell.evaluate(devCorpus)
-  # print str(smoothBigramOutcome)
+  print 'Smooth Bigram Language Model: '
+  smoothBigramLM = SmoothBigramModel(trainingCorpus)
+  smoothBigramSpell = SpellCorrect(smoothBigramLM, trainingCorpus)
+  smoothBigramOutcome = smoothBigramSpell.evaluate(devCorpus)
+  print str(smoothBigramOutcome)
 
-  # print 'Backoff Language Model: '
-  # backoffLM = BackoffModel(trainingCorpus)
-  # backoffSpell = SpellCorrect(backoffLM, trainingCorpus)
-  # backoffOutcome = backoffSpell.evaluate(devCorpus)
-  # print str(backoffOutcome)
+  print 'Backoff Language Model: '
+  backoffLM = BackoffModel(trainingCorpus)
+  backoffSpell = SpellCorrect(backoffLM, trainingCorpus)
+  backoffOutcome = backoffSpell.evaluate(devCorpus)
+  print str(backoffOutcome)
 
-  # print 'Custom Language Model: '
-  # customLM = CustomModel(trainingCorpus)
-  # customSpell = SpellCorrect(customLM, trainingCorpus)
-  # customOutcome = customSpell.evaluate(devCorpus)
-  # print str(customOutcome)
+  print 'Custom Language Model: '
+  customLM = CustomModel(trainingCorpus)
+  customSpell = SpellCorrect(customLM, trainingCorpus)
+  customOutcome = customSpell.evaluate(devCorpus)
+  print str(customOutcome)
 
 if __name__ == "__main__":
     main()

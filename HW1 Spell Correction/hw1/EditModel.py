@@ -59,10 +59,6 @@ class EditModel(object):
 
   def insertEdits(self, word):
     """Returns a list of edits of 1-insert distance words and rules used to generate them."""
-    # TODO: write this
-    # Tip: you might find EditModel.ALPHABET helpful
-    # Tip: If inserting the letter 'a' as the second character in the word 'taest', the corrupt
-    #      signal is 't' and the correct signal is 'ta'. See slide 17 of the noisy channel model.
     word = "<" + word
     ret = []
     alphabets = self.ALPHABET # get the letters
@@ -76,28 +72,20 @@ class EditModel(object):
 
   def transposeEdits(self, word):
     """Returns a list of edits of 1-transpose distance words and rules used to generate them."""
-    # TODO: write this
-    # Tip: If tranposing letters 'te' in the word 'test', the corrupt signal is 'te'
-    #      and the correct signal is 'et'. See slide 17 of the noisy channel model.
     if len(word) <= 0:
       return []
     ret = []
     for i in xrange(0, len(word)-1):
-      for j in xrange(i+1, len(word)):
-        corruptLetters = word[i] + word[j] # corrupt letter is the two need to be swap
-        correctLetters = word[j] + word[i] # correct letter is the swapped letter result
-        temp = list(word) # listerize string for swapping letters
-        temp[i], temp[j] = word[j], word[i]
-        correction = "".join(temp)         # correction is the the updated test 
-        ret.append(Edit(correction, corruptLetters, correctLetters))
+      corruptLetters = word[i] + word[i+1] # corrupt letter is the two need to be swap
+      correctLetters = word[i+1] + word[i] # correct letter is the swapped letter result
+      temp = list(word) # listerize string for swapping letters
+      temp[i], temp[i+1] = word[i+1], word[i]
+      correction = "".join(temp)         # correction is the the updated test 
+      ret.append(Edit(correction, corruptLetters, correctLetters))
     return ret
 
   def replaceEdits(self, word):
     """Returns a list of edits of 1-replace distance words and rules used to generate them."""
-    # TODO: write this
-    # Tip: you might find EditModel.ALPHABET helpful
-    # Tip: If replacing the letter 'e' with 'q' in the word 'test', the corrupt signal is 'e'
-    #      and the correct signal is 'q'. See slide 17 of the noisy channel model.
     ret = []
     alphabets = self.ALPHABET # get the letters
     for i in xrange(0, len(word)):
