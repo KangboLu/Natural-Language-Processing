@@ -1,7 +1,7 @@
 # Natural-Language-Processing-Course
 ECS-189 Taught by [Zhou Yu](http://www.cs.cmu.edu/~zhouyu/) in UC Davis
 
-## HW 1: Spell Correct
+## HW 1: Spell Correction
 * Implement Noisy Channel
 * Test 6 language models with training and dev data
 * 6 Language Models: 
