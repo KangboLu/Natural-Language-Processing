@@ -1,5 +1,5 @@
 # Natural-Language-Processing-Course
-ECS-189 Taught by Zhou Yu in UC Davis
+ECS-189 Taught by [Zhou Yu](http://www.cs.cmu.edu/~zhouyu/) in UC Davis
 
 ## HW 1: Spell Correct
 * Implement Noisy Channel
