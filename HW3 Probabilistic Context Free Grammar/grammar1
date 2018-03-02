@@ -1,0 +1,9 @@
+ROOT -> S1 99
+S1 -> NP VP . 1
+VP -> VerbT NP 1
+NP -> Det Nbar 20
+NP -> Proper 1
+Nbar -> Noun 20
+Nbar -> Nbar PP 1
+PP -> Prep NP 1
+
