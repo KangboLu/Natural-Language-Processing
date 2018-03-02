@@ -19,6 +19,14 @@ Noun -> husk 1
 Noun -> home 1
 Noun -> weight 1
 Noun -> story 1
+Noun -> Arthur 1
+Noun -> Guinevere 1
+Noun -> Sir Lancelot 1
+Noun -> Sir Bedevere 1
+Noun -> Zoot 1
+Noun -> Dingo 1
+Noun -> Patsy 1
+Noun -> Uther Pendragon 1
 Det -> a 1
 Det -> another 1
 Det -> any 1
@@ -42,14 +50,6 @@ Prep -> on 1
 Prep -> over 1
 Prep -> through 1
 Prep -> with 1
-Proper -> Arthur 1
-Proper -> Guinevere 1
-Proper -> Sir Lancelot 1
-Proper -> Sir Bedevere 1
-Proper -> Zoot 1
-Proper -> Dingo 1
-Proper -> Patsy 1
-Proper -> Uther Pendragon 1
 VerbT -> has 1
 VerbT -> covers 1
 VerbT -> is 1
@@ -64,6 +64,9 @@ Misc -> ... 1
 Misc -> -- 1
 Misc -> ; 1
 Misc -> : 1
+EOS -> ! 1
+EOS -> . 1
+EOS -> ? 1
 Misc -> and 1
 Misc -> but 1
 Misc -> or 1
