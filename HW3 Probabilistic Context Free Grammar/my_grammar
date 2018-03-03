@@ -6,7 +6,7 @@ S2 -> +Noun 5
 S2 -> +VNoun 2
 S2 -> +PNoun 2
 S2 -> +Prep 1
-S2 -> +Proper 1
+S2 -> +Proper 5
 S2 -> +Adj 1
 S2 -> +PQuan 1
 S2 -> +Aux 1
@@ -82,11 +82,11 @@ S2 -> +PNoun EOS 1
 
 +Proper -> Proper 1
 +Proper -> Proper +Det 1
-+Proper -> Proper +Misc 1
++Proper -> Proper +Misc 5
 +Proper -> Proper +Noun 1
 +Proper -> Proper +Prep 1
 +Proper -> Proper +Proper 1
-+Proper -> Proper +VerbT 1
++Proper -> Proper +VerbT 3
 +Proper -> Proper +EOS 1
 +Proper -> Proper +Adv 1
 
