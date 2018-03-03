@@ -44,7 +44,7 @@ S2 -> +PNoun EOS 1
 +VNoun -> VNoun +Noun 1
 +VNoun -> VNoun +Prep 1
 
-+Noun -> Noun 1
++Noun -> Noun 0.1
 +Noun -> Noun +Misc 0.5
 +Noun -> Noun +Prep 1
 +Noun -> Noun +VerbT 0.5
@@ -56,8 +56,8 @@ S2 -> +PNoun EOS 1
 
 +Comma -> Comma +PQuan 1
 +Comma -> Comma +Det 5
-+Comma -> Comma +Conj 1
-+Comma -> Comma +Noun 1
++Comma -> Comma +Conj 2
++Comma -> Comma +Noun 0.5
 
 +Conj -> Conj +Noun 3
 +Conj -> Conj +Det 1
