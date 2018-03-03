@@ -18,8 +18,6 @@ S2 -> Adj +Noun 1
 S2 -> Det +Adj 1
 S2 -> Det +Noun 1
 S2 -> Aux +Noun 1
-S2 -> VerbT +Det 1
-S2 -> +VerbT Adv 1
 S2 -> +Proper Adv 1
 S2 -> +Noun Adv 1
 S2 -> VNoun +Det 1
@@ -59,7 +57,7 @@ S2 -> +PNoun EOS 1
 +Comma -> Comma +PQuan 1
 +Comma -> Comma +Det 5
 +Comma -> Comma +Conj 1
-+Comma -> Comma +Noun 10
++Comma -> Comma +Noun 1
 
 +Conj -> Conj +Noun 3
 +Conj -> Conj +Det 1
