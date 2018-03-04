@@ -71,6 +71,8 @@ Det -> that 1
 Det -> the 1
 Det -> this 1
 Det -> if 1
+Det -> neither 1
+Det -> either 1
 Prep -> above 1
 Prep -> across 1
 Prep -> at 1
@@ -94,6 +96,10 @@ Proper -> Zoot 2
 Proper -> Dingo 2
 Proper -> Patsy 2
 Proper -> Uther Pendragon 2
+Noun -> Camelot 1
+Noun -> England 1
+Noun -> Holy Grail 1
+Noun -> Round Table 1
 VerbT -> covers 1
 VerbT -> is 1
 VerbT -> drinks 1
@@ -114,7 +120,6 @@ Misc -> and 1
 Misc -> or 1
 Misc -> either 1
 Misc -> nor 1
-Misc -> neither 1
 Misc -> so 1
 Misc -> eight 1
 Misc -> five 1
@@ -311,25 +316,24 @@ Adj -> hottest 5
 Adj -> simplest 5
 Adj -> tiniest 5
 Adj -> hardest 5
-PreVerb -> can 1
-PreVerb -> could 1
-PreVerb -> may 1
-PreVerb -> might 1
-PreVerb -> must 1
-PreVerb -> ought 1
-PreVerb -> shall 1
-PreVerb -> should 1
-PreVerb -> will 1
-PreVerb -> would 1
-Aux -> what 1
-Aux -> which 1
-Aux -> what 1
-Aux -> who 1
-Aux -> whose 1
-Aux -> how 1
-Aux -> when 1
-Aux -> where 1
-Aux -> why 1
+MD -> can 1
+MD -> could 1
+MD -> may 1
+MD -> might 1
+MD -> must 1
+MD -> ought 1
+MD -> shall 1
+MD -> should 1
+MD -> will 1
+MD -> would 1
+WRB -> why 1
+WRB -> where 1
+WRB -> when 1
+WRB -> how 1
+WP$ -> whose 1
+WP -> who 1
+WP -> what 1
+WDT -> which 1
 VNoun -> having 1
 VNoun -> speaking 1
 VNoun -> covering 1
@@ -347,6 +351,7 @@ Conj -> so 1
 Conj -> for 1
 Conj -> but 1
 Conj -> or 1
+Conj -> nor 1
 Adv -> currently 1
 Adv -> frequently 1
 Adv -> precisely 1

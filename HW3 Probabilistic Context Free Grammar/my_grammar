@@ -1,31 +1,31 @@
 ROOT -> S2 99
 
+S2 -> +Proper 10
+S2 -> +WRB 5
+S2 -> +WP 5
+S2 -> +Noun 5
 S2 -> +Det 1
 S2 -> +Misc 1
-S2 -> +Noun 5
 S2 -> +VNoun 2
 S2 -> +PNoun 2
 S2 -> +Prep 1
-S2 -> +Proper 5
 S2 -> +Adj 1
 S2 -> +PQuan 1
-S2 -> +Aux 1
-S2 -> PQuan +PNoun 2
-S2 -> Noun +PreVerb 2
+S2 -> +Conj 0.1
+S2 -> Noun +MD 2
+S2 -> Proper +MD 4
 S2 -> Noun +Conj 2
-S2 -> Noun +Comma 2
 S2 -> Adj +Noun 1
 S2 -> Det +Adj 1
 S2 -> Det +Noun 1
-S2 -> Aux +Noun 1
-S2 -> +Proper Adv 1
-S2 -> +Noun Adv 1
+S2 -> +Proper Adv 0.5
+S2 -> +Noun Adv 0.5
 S2 -> VNoun +Det 1
-S2 -> +Noun EOS 1
-S2 -> +PNoun EOS 1
 
-+Aux -> Aux +Noun 10
-+Aux -> Aux +Det 5
++WRB -> WRB +Det 5
++WRB -> WRB +MD 10
++WP -> WP +VerbT 0.5
++WP -> WP +Proper 0.5
 
 +Adj -> Adj +Noun 10
 
@@ -44,7 +44,6 @@ S2 -> +PNoun EOS 1
 +VNoun -> VNoun +Noun 1
 +VNoun -> VNoun +Prep 1
 
-+Noun -> Noun 0.1
 +Noun -> Noun +Misc 0.5
 +Noun -> Noun +Prep 1
 +Noun -> Noun +VerbT 0.5
@@ -59,7 +58,7 @@ S2 -> +PNoun EOS 1
 +Comma -> Comma +Conj 2
 +Comma -> Comma +Noun 0.5
 
-+Conj -> Conj +Noun 3
++Conj -> Conj +Noun 5
 +Conj -> Conj +Det 1
 +Conj -> Conj +Adj 1
 +Conj -> Conj +PQuan 1
@@ -80,19 +79,18 @@ S2 -> +PNoun EOS 1
 +Prep -> Prep +PQuan 1
 +Prep -> Prep +Proper 1
 
-+Proper -> Proper 1
 +Proper -> Proper +Det 1
 +Proper -> Proper +Misc 5
 +Proper -> Proper +Noun 1
 +Proper -> Proper +Prep 1
 +Proper -> Proper +Proper 1
 +Proper -> Proper +VerbT 3
-+Proper -> Proper +EOS 1
++Proper -> Proper +EOS 0.5
 +Proper -> Proper +Adv 1
 
-+PreVerb -> PreVerb 1
-+PreVerb -> PreVerb +PVerb 10
-+PreVerb -> PreVerb +Adv 10
++MD -> MD 1
++MD -> MD +PVerb 10
++MD -> MD +Adv 10
 
 +Adv -> Adv 1
 +Adv -> Adv +EOS 2
