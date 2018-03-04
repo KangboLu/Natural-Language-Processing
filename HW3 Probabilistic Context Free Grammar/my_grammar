@@ -21,6 +21,7 @@ S2 -> Det +Noun 1
 S2 -> +Proper Adv 0.5
 S2 -> +Noun Adv 0.5
 S2 -> VNoun +Det 1
+S2 -> VNoun +TO 2
 
 +WRB -> WRB +Det 5
 +WRB -> WRB +MD 10
@@ -44,12 +45,17 @@ S2 -> VNoun +Det 1
 +VNoun -> VNoun +Noun 1
 +VNoun -> VNoun +Prep 1
 
++TO -> TO +Proper 10
++TO -> TO +Noun 5
++TO -> TO +Det 5
+
 +Noun -> Noun +Misc 0.5
 +Noun -> Noun +Prep 1
 +Noun -> Noun +VerbT 0.5
 +Noun -> Noun +EOS 1
 +Noun -> Noun +Comma 1
 +Noun -> Noun +Proper 1
++Noun -> Noun +TO 1
 
 +PNoun -> PNoun +PVerb 10
 
@@ -69,6 +75,7 @@ S2 -> VNoun +Det 1
 +PVerb -> PVerb +Prep 1
 +PVerb -> PVerb +VNoun 5
 +PVerb -> PVerb +Adv 5
++PVerb -> PVerb +To 5
 
 +Prep -> Prep +Det 20
 +Prep -> Prep +Misc 1
@@ -116,3 +123,4 @@ S2 -> VNoun +Det 1
 +Misc -> Misc +VerbT 1
 +Misc -> Misc +Proper 1
 +Misc -> Misc +Adv 1
++Misc -> Misc +TO 1
