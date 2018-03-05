@@ -1,5 +1,5 @@
 ROOT -> Statement 7
-ROOT -> Question 3
+ROOT -> Question 4
 
 Statement -> NP VP 5
 Statement -> +Proper 10
@@ -17,6 +17,7 @@ Statement -> Noun +MD 2
 Statement -> Noun +Conj 2
 Statement -> Noun +VBD 1
 Statement -> Proper +MD 4
+Statement -> Proper +VBD 4
 Statement -> Proper +VerbT 5
 Statement -> Det +QS 1
 Statement -> VNoun +Det 1
@@ -52,6 +53,7 @@ Question -> +Misc 2
 +WP -> WP +VerbT 5
 +WP -> WP +Proper 3
 +WP -> WP +PNoun 3
++WP -> WP +Noun 3
 +Do -> Do +Misc 5
 +Do -> Do +PNoun 5
 
@@ -72,10 +74,12 @@ Question -> +Misc 2
 +VNoun -> VNoun +Misc 1
 +VNoun -> VNoun +Noun 1
 +VNoun -> VNoun +Prep 5
++VNoun -> VNoun +Proper 5
 +VNoun -> VNoun +TO 1
 
 +TO -> TO +Proper 10
 +TO -> TO +Noun 5
++TO -> TO +PVerb 5
 +TO -> TO +Det 5
 
 +QS -> QS +Noun 1
@@ -98,15 +102,16 @@ Question -> +Misc 2
 +PNoun -> PNoun +PVerb 10
 
 +PersonNoun -> PersonNoun +VerbT 2
++PersonNoun -> PersonNoun +VBD 2
 
 +Comma -> Comma +PQuan 1
 +Comma -> Comma +Det 5
 +Comma -> Comma +Conj 5
 +Comma -> Comma +Noun 0.3
 
-+Conj -> Conj +Noun 5
 +Conj -> Conj NP 5
 +Conj -> Conj VP 5
++Conj -> Conj +Noun 5
 +Conj -> Conj +Det 1
 +Conj -> Conj +Adj 1
 +Conj -> Conj +PQuan 1
@@ -114,11 +119,13 @@ Question -> +Misc 2
 +PVerb -> PVerb +Det 5
 +PVerb -> PVerb +Misc 0.7
 +PVerb -> PVerb +Noun 10
++PVerb -> PVerb +PNoun 5
 +PVerb -> PVerb +Prep 1
 +PVerb -> PVerb +VNoun 5
 +PVerb -> PVerb +Adv 10
 +PVerb -> PVerb +TO 5
 +PVerb -> PVerb EOSQ 5
++PVerb -> PVerb EOS 5
 +PVerb -> PVerb +VerbP 5
 +PVerb -> PVerb +BEEN 5
 
@@ -141,7 +148,7 @@ Question -> +Misc 2
 +Proper -> Proper +Noun 1
 +Proper -> Proper +Prep 1
 +Proper -> Proper +Proper 1
-+Proper -> Proper +PVerb 1
++Proper -> Proper +PVerb 0.3
 +Proper -> Proper +VerbT 5
 +Proper -> Proper +VBD 1
 +Proper -> Proper +MD 1
@@ -149,9 +156,12 @@ Question -> +Misc 2
 +Proper -> Proper +WP 3
 +Proper -> Proper +WRB 1
 +Proper -> Proper EOS 0.5
++Proper -> Proper EOSQ 0.5
 
 +MD -> MD 1
 +MD -> MD +PVerb 10
++MD -> MD +PersonNoun 5
++MD -> MD +Proper 5
 +MD -> MD +Adv 10
 
 +Adv -> Adv 1
@@ -159,6 +169,7 @@ Question -> +Misc 2
 +Adv -> Adv +VerbT 2
 +Adv -> Adv +PVerb 2
 +Adv -> Adv +Conj 1
++Adv -> Adv +Connect 1
 +Adv -> Adv +Misc 10
 
 +VerbT -> VerbT 1
@@ -183,12 +194,14 @@ Question -> +Misc 2
 
 +VBD -> VBD +Prep 1
 +VBD -> VBD +TO 1
++VBD -> VBD +Det 1
 +VBD -> VBD +Proper 1
 +VBD -> VBD +PRP$ 1
 
 +Connect -> Connect +Noun 1
 +Connect -> Connect +Det 1
 +Connect -> Connect +Misc 1
++Connect -> Connect +PNoun 1
 
 +Misc -> Misc 1
 +Misc -> EOSQ 1
@@ -196,7 +209,11 @@ Question -> +Misc 2
 +Misc -> +Adj 1
 +Misc -> +Comma 1
 +Misc -> +BEEN 1
++Misc -> +VNoun 1
++Misc -> +PNoun 1
++Misc -> Misc +VBD 1
 +Misc -> Misc +Adj 1
++Misc -> Misc +PNoun 1
 +Misc -> Misc +Det 1
 +Misc -> Misc +Misc 1
 +Misc -> Misc +Noun 1
