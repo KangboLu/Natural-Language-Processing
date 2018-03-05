@@ -28,9 +28,11 @@ NP -> PersonNoun 1
 NP -> Proper 20
 NP -> Adj NP 1
 NP -> Conj NP 1
+NP -> VNoun +TO 1
 VP -> VerbT 1
 VP -> VerbT NP 1
 VP -> VerbT PP 1
+VP -> VerbT +Adj 1
 VP -> VerbT +Proper 1
 VP -> VerbT +WP 1
 VP -> VerbT +Misc 1
@@ -39,9 +41,9 @@ Nbar -> Noun 20
 Nbar -> Nbar PP 1
 PP -> Prep NP 1
 
-Question -> +WRB 5
-Question -> +WP 5
-Question -> +Do 5
+Question -> +WRB 4
+Question -> +WP 4
+Question -> +Do 4
 Question -> +Misc 2
 
 +WRB -> WRB +Det 3
@@ -52,7 +54,10 @@ Question -> +Misc 2
 +WP -> WP +PNoun 3
 +Do -> Do +Misc 5
 +Do -> Do +PNoun 5
+
 +Adj -> Adj +Noun 10
++Adj -> Adj +Misc 1
++Adj -> Adj EOS 1
 
 +PQuan -> PQuan +PNoun 10
 
@@ -66,7 +71,8 @@ Question -> +Misc 2
 +VNoun -> VNoun +Det 10
 +VNoun -> VNoun +Misc 1
 +VNoun -> VNoun +Noun 1
-+VNoun -> VNoun +Prep 1
++VNoun -> VNoun +Prep 5
++VNoun -> VNoun +TO 1
 
 +TO -> TO +Proper 10
 +TO -> TO +Noun 5
@@ -113,6 +119,8 @@ Question -> +Misc 2
 +PVerb -> PVerb +Adv 10
 +PVerb -> PVerb +TO 5
 +PVerb -> PVerb EOSQ 5
++PVerb -> PVerb +VerbP 5
++PVerb -> PVerb +BEEN 5
 
 +Prep -> Prep +Det 20
 +Prep -> Prep +Misc 1
@@ -153,8 +161,9 @@ Question -> +Misc 2
 +Adv -> Adv +Conj 1
 +Adv -> Adv +Misc 10
 
-+Verb -> VerbT 1
-+Verb -> VerbT PP 1
++VerbT -> VerbT 1
++VerbT -> VerbT PP 1
++VerbT -> VerbT +Adj 1
 +VerbT -> VerbT +Det 5
 +VerbT -> VerbT +Misc 1
 +VerbT -> VerbT +Noun 5
@@ -162,6 +171,15 @@ Question -> +Misc 2
 +VerbT -> VerbT +VNoun 1
 +VerbT -> VerbT +Proper 5
 +VerbT -> VerbT +Comma 5
++VerbT -> VerbT +BEEN 5
++VerbT -> VerbT +VerbP 5
+
++VerbP -> VerbP EOS 1
++VerbP -> VerbP +Prep 1
+
++BEEN -> BEEN +VerbP 1
++BEEN -> BEEN +VNoun 1
++BEEN -> BEEN +Misc 1
 
 +VBD -> VBD +Prep 1
 +VBD -> VBD +TO 1
@@ -175,6 +193,10 @@ Question -> +Misc 2
 +Misc -> Misc 1
 +Misc -> EOSQ 1
 +Misc -> EOS 1
++Misc -> +Adj 1
++Misc -> +Comma 1
++Misc -> +BEEN 1
++Misc -> Misc +Adj 1
 +Misc -> Misc +Det 1
 +Misc -> Misc +Misc 1
 +Misc -> Misc +Noun 1
