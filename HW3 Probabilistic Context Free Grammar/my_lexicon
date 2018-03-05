@@ -46,11 +46,13 @@ PVerb -> speak 1
 PVerb -> cover 1
 PVerb -> ride 1
 PVerb -> drink 1
+Noun -> drink
 PVerb -> grow 1
 PVerb -> carry 1
 PVerb -> suggest 1
 PVerb -> migrate 1
 PVerb -> know 1
+PVerb -> husk 1
 PQuan -> eight 1
 PQuan -> five 1
 PQuan -> 5.5 1
@@ -127,7 +129,6 @@ Misc -> there 1
 Misc -> can 1
 Misc -> could 1
 Misc -> that 1
-Misc -> so 1
 Misc -> while 1
 Misc -> because 1
 Misc -> may 1
@@ -158,7 +159,6 @@ Misc -> he 1
 Misc -> her 1
 Misc -> him 1
 Misc -> it 1
-Misc -> one 1
 Misc -> them 1
 Misc -> she 1
 Misc -> they 1
@@ -176,6 +176,7 @@ Misc -> have 1
 Misc -> speak 1
 Misc -> cover 1
 Misc -> be 1
+BE -> be 1
 Misc -> ride 1
 Misc -> drink 1
 Misc -> grow 1
@@ -183,18 +184,6 @@ Misc -> carry 1
 Misc -> suggest 1
 Misc -> migrate 1
 Misc -> know 1
-Misc -> had 1
-Misc -> spoke 1
-Misc -> covered 1
-Misc -> was 1
-Misc -> were 1
-Misc -> rode 1
-Misc -> drank 1
-Misc -> grew 1
-Misc -> carried 1
-Misc -> suggested 1
-Misc -> migrated 1
-Misc -> knew 1
 BEEN -> been 1
 VerbP -> had 1
 VerbP -> spoken 1
@@ -316,6 +305,5 @@ PRP$ -> his 1
 PRP$ -> its 1
 PRP$ -> their 1
 Connect -> that 1
-Connect -> so 1
 Connect -> while 1
 Connect -> because 1
