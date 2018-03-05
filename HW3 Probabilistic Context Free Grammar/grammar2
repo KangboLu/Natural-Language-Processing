@@ -1,0 +1,50 @@
+ROOT -> S2 1
+S2 ->  1
+S2 -> +Det 1
+S2 -> +Misc 1
+S2 -> +Noun 1
+S2 -> +Prep 1
+S2 -> +Proper 1
+S2 -> +VerbT 1
++Det -> Det 1
++Det -> Det +Det 1
++Det -> Det +Misc 1
++Det -> Det +Noun 1
++Det -> Det +Prep 1
++Det -> Det +Proper 1
++Det -> Det +VerbT 1
++Misc -> Misc 1
++Misc -> Misc +Det 1
++Misc -> Misc +Misc 1
++Misc -> Misc +Noun 1
++Misc -> Misc +Prep 1
++Misc -> Misc +Proper 1
++Misc -> Misc +VerbT 1
++Noun -> Noun 1
++Noun -> Noun +Det 1
++Noun -> Noun +Misc 1
++Noun -> Noun +Noun 1
++Noun -> Noun +Prep 1
++Noun -> Noun +Proper 1
++Noun -> Noun +VerbT 1
++Prep -> Prep 1
++Prep -> Prep +Det 1
++Prep -> Prep +Misc 1
++Prep -> Prep +Noun 1
++Prep -> Prep +Prep 1
++Prep -> Prep +Proper 1
++Prep -> Prep +VerbT 1
++Proper -> Proper 1
++Proper -> Proper +Det 1
++Proper -> Proper +Misc 1
++Proper -> Proper +Noun 1
++Proper -> Proper +Prep 1
++Proper -> Proper +Proper 1
++Proper -> Proper +VerbT 1
++VerbT -> VerbT 1
++VerbT -> VerbT +Det 1
++VerbT -> VerbT +Misc 1
++VerbT -> VerbT +Noun 1
++VerbT -> VerbT +Prep 1
++VerbT -> VerbT +Proper 1
++VerbT -> VerbT +VerbT 1
