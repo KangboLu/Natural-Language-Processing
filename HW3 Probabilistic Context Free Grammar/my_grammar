@@ -1,44 +1,67 @@
-ROOT -> S2 99
+ROOT -> Statement 7
+ROOT -> Question 3
 
-S2 -> +Proper 10
-S2 -> +WRB 5
-S2 -> +WP 5
-S2 -> +Noun 5
-S2 -> +Det 1
-S2 -> +Misc 1
-S2 -> +VNoun 2
-S2 -> +PNoun 2
-S2 -> +Prep 1
-S2 -> +Adj 1
-S2 -> +PQuan 1
-S2 -> +Conj 0.1
-S2 -> Noun +MD 2
-S2 -> Proper +MD 4
-S2 -> Noun +Conj 2
-S2 -> Adj +Noun 1
-S2 -> Det +Adj 1
-S2 -> Det +Noun 1
-S2 -> +Proper Adv 0.5
-S2 -> +Noun Adv 0.5
-S2 -> VNoun +Det 1
-S2 -> VNoun +TO 2
+Statement -> NP VP 5
+Statement -> +Proper 10
+Statement -> +Noun 5
+Statement -> +Det 1
+Statement -> +Misc 2
+Statement -> +VNoun 2
+Statement -> +PNoun 2
+Statement -> +PersonNoun +VerbT 2
+Statement -> +Prep 1
+Statement -> +Adj 1
+Statement -> +PQuan 1
+Statement -> +Conj 0.1
+Statement -> Noun +MD 2
+Statement -> Noun +Conj 2
+Statement -> Noun +VBD 1
+Statement -> Proper +MD 4
+Statement -> Proper +VerbT 5
+Statement -> Det +QS 1
+Statement -> VNoun +Det 1
+Statement -> VNoun +TO 2
+Statement -> Misc +VerbT 2
 
-+WRB -> WRB +Det 5
-+WRB -> WRB +MD 10
-+WP -> WP +VerbT 0.5
-+WP -> WP +Proper 0.5
+NP -> Det Noun 1
+NP -> PersonNoun 1
+NP -> Proper 20
+NP -> Adj NP 1
+NP -> Conj NP 1
+VP -> VerbT 1
+VP -> VerbT NP 1
+VP -> VerbT PP 1
+VP -> VerbT +Proper 1
+VP -> VerbT +WP 1
+VP -> VerbT +Misc 1
 
+Nbar -> Noun 20
+Nbar -> Nbar PP 1
+PP -> Prep NP 1
+
+Question -> +WRB 5
+Question -> +WP 5
+Question -> +Do 5
+Question -> +Misc 2
+
++WRB -> WRB +Det 3
++WRB -> WRB +MD 9
++WRB -> WRB +VerbT 5
++WP -> WP +VerbT 5
++WP -> WP +Proper 3
++WP -> WP +PNoun 3
++Do -> Do +Misc 5
++Do -> Do +PNoun 5
 +Adj -> Adj +Noun 10
 
 +PQuan -> PQuan +PNoun 10
 
-+Det -> Det +Det 1
 +Det -> Det +Misc 1
 +Det -> Det +Noun 10
 +Det -> Det +Prep 1
-+Det -> Det +VerbT 1
-+Det -> Det +Adj 0.1
-+Det -> Det +Proper 1
++Det -> Det +VerbT 12
++Det -> Det +Adj 5
++Det -> Det +Proper 5
 
 +VNoun -> VNoun +Det 10
 +VNoun -> VNoun +Misc 1
@@ -49,78 +72,116 @@ S2 -> VNoun +TO 2
 +TO -> TO +Noun 5
 +TO -> TO +Det 5
 
-+Noun -> Noun +Misc 0.5
++QS -> QS +Noun 1
++QS -> QS +Proper 1
+
++Noun -> Noun +Misc 1
++Noun -> Noun +VerbT 1.5
++Noun -> Noun +PVerb 1.5
++Noun -> Noun +TO 0.5
++Noun -> Noun +WP 0.05
 +Noun -> Noun +Prep 1
-+Noun -> Noun +VerbT 0.5
-+Noun -> Noun +EOS 1
++Noun -> Noun +Noun 0.05
 +Noun -> Noun +Comma 1
 +Noun -> Noun +Proper 1
-+Noun -> Noun +TO 1
++Noun -> Noun +VBD 1
++Noun -> Noun +QS 1
++Noun -> Noun +Connect 1
++Noun -> Noun EOS 1
 
 +PNoun -> PNoun +PVerb 10
 
++PersonNoun -> PersonNoun +VerbT 2
+
 +Comma -> Comma +PQuan 1
 +Comma -> Comma +Det 5
-+Comma -> Comma +Conj 2
-+Comma -> Comma +Noun 0.5
++Comma -> Comma +Conj 5
++Comma -> Comma +Noun 0.3
 
 +Conj -> Conj +Noun 5
++Conj -> Conj NP 5
++Conj -> Conj VP 5
 +Conj -> Conj +Det 1
 +Conj -> Conj +Adj 1
 +Conj -> Conj +PQuan 1
 
-+PVerb -> PVerb +Det 1
-+PVerb -> PVerb +Misc 1
++PVerb -> PVerb +Det 5
++PVerb -> PVerb +Misc 0.7
 +PVerb -> PVerb +Noun 10
 +PVerb -> PVerb +Prep 1
 +PVerb -> PVerb +VNoun 5
-+PVerb -> PVerb +Adv 5
-+PVerb -> PVerb +To 5
++PVerb -> PVerb +Adv 10
++PVerb -> PVerb +TO 5
++PVerb -> PVerb EOSQ 5
 
 +Prep -> Prep +Det 20
 +Prep -> Prep +Misc 1
 +Prep -> Prep +Noun 10
 +Prep -> Prep +Prep 2
 +Prep -> Prep +VerbT 1
-+Prep -> Prep +Adj 0.1
-+Prep -> Prep +PQuan 1
-+Prep -> Prep +Proper 1
++Prep -> Prep +Adj 0.5
++Prep -> Prep +PQuan 5
++Prep -> Prep +Proper 10
++Prep -> Prep +Connect 10
++Prep -> Prep +PRP$ 2
+
++PRP$ -> PRP$ +Noun 1
++PRP$ -> PRP$ +Proper 1
 
 +Proper -> Proper +Det 1
-+Proper -> Proper +Misc 5
++Proper -> Proper +Misc 3
 +Proper -> Proper +Noun 1
 +Proper -> Proper +Prep 1
 +Proper -> Proper +Proper 1
-+Proper -> Proper +VerbT 3
-+Proper -> Proper +EOS 0.5
-+Proper -> Proper +Adv 1
++Proper -> Proper +PVerb 1
++Proper -> Proper +VerbT 5
++Proper -> Proper +VBD 1
++Proper -> Proper +MD 1
++Proper -> Proper +Comma 5
++Proper -> Proper +WP 3
++Proper -> Proper +WRB 1
++Proper -> Proper EOS 0.5
 
 +MD -> MD 1
 +MD -> MD +PVerb 10
 +MD -> MD +Adv 10
 
 +Adv -> Adv 1
-+Adv -> Adv +EOS 2
++Adv -> Adv EOS 2
 +Adv -> Adv +VerbT 2
 +Adv -> Adv +PVerb 2
 +Adv -> Adv +Conj 1
 +Adv -> Adv +Misc 10
 
++Verb -> VerbT 1
++Verb -> VerbT PP 1
 +VerbT -> VerbT +Det 5
 +VerbT -> VerbT +Misc 1
-+VerbT -> VerbT +Noun 1
++VerbT -> VerbT +Noun 5
 +VerbT -> VerbT +Prep 1
 +VerbT -> VerbT +VNoun 1
-+VerbT -> VerbT +Proper 1
++VerbT -> VerbT +Proper 5
++VerbT -> VerbT +Comma 5
 
-+EOS -> EOS 10
++VBD -> VBD +Prep 1
++VBD -> VBD +TO 1
++VBD -> VBD +Proper 1
++VBD -> VBD +PRP$ 1
+
++Connect -> Connect +Noun 1
++Connect -> Connect +Det 1
++Connect -> Connect +Misc 1
 
 +Misc -> Misc 1
++Misc -> EOSQ 1
++Misc -> EOS 1
 +Misc -> Misc +Det 1
 +Misc -> Misc +Misc 1
 +Misc -> Misc +Noun 1
 +Misc -> Misc +Prep 1
-+Misc -> Misc +VerbT 1
++Misc -> Misc +VerbT 2
 +Misc -> Misc +Proper 1
 +Misc -> Misc +Adv 1
 +Misc -> Misc +TO 1
++Misc -> Misc EOSQ 1
++Misc -> Misc EOS 1

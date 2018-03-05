@@ -19,17 +19,12 @@ Noun -> husk 1
 Noun -> home 1
 Noun -> weight 1
 Noun -> story 1
-Noun -> Arthur 1
-Noun -> Guinevere 1
-Noun -> Sir Lancelot 1
-Noun -> Sir Bedevere 1
-Noun -> Zoot 1
-Noun -> Dingo 1
-Noun -> Patsy 1
-Noun -> Uther Pendragon 1
-Noun -> Camelot 1
-Noun -> England 1
-Noun -> Holy Grail 1
+PersonNoun -> he 1
+PersonNoun -> one 1
+PersonNoun -> she 1
+PersonNoun -> it 2
+Noun -> her 1
+Noun -> him 1
 Noun -> Round Table 1
 PNoun -> they 5
 PNoun -> coconuts 1
@@ -87,7 +82,6 @@ Prep -> on 1
 Prep -> over 1
 Prep -> through 1
 Prep -> with 1
-VerbT -> has 1
 Proper -> Arthur 2
 Proper -> Guinevere 2
 Proper -> Sir Lancelot 2
@@ -96,12 +90,14 @@ Proper -> Zoot 2
 Proper -> Dingo 2
 Proper -> Patsy 2
 Proper -> Uther Pendragon 2
-Noun -> Camelot 1
-Noun -> England 1
-Noun -> Holy Grail 1
-Noun -> Round Table 1
+Proper -> Camelot 1
+Proper -> England 1
+Proper -> Holy Grail 1
+Proper -> Round Table 1
+VerbT -> has 1
+VerbT -> does 1
 VerbT -> covers 1
-VerbT -> is 1
+VerbT -> is 3
 VerbT -> drinks 1
 VerbT -> carries 1
 VerbT -> rides 1
@@ -115,7 +111,7 @@ Misc -> ; 1
 Misc -> : 1
 EOS -> ! 1
 EOS -> . 1
-EOS -> ? 1
+EOSQ -> ? 1
 Misc -> and 1
 Misc -> or 1
 Misc -> either 1
@@ -128,12 +124,12 @@ Misc -> 5.5 1
 Misc -> sixty 1
 Misc -> 5,000 1
 Misc -> there 1
+Misc -> can 1
+Misc -> could 1
 Misc -> that 1
 Misc -> so 1
 Misc -> while 1
 Misc -> because 1
-Misc -> can 1
-Misc -> could 1
 Misc -> may 1
 Misc -> might 1
 Misc -> must 1
@@ -206,8 +202,8 @@ Misc -> their 1
 Misc -> again 1
 Misc -> already 1
 Misc -> do 1
-Misc -> does 1
-TO -> to 1
+DO -> do 5
+TO -> to 2
 Misc -> not 1
 Misc -> have 1
 Misc -> speak 1
@@ -254,12 +250,12 @@ Misc -> carried 1
 Misc -> suggested 1
 Misc -> migrated 1
 Misc -> known 1
-Misc -> speaks 1
-Misc -> grows 1
-Misc -> goes 1
-Misc -> migrates 1
-Misc -> suggests 1
-Misc -> knows 1
+VerbT -> speaks 1
+VerbT -> grows 1
+VerbT -> goes 1
+VerbT -> migrates 1
+VerbT -> suggests 1
+VerbT -> knows 1
 Misc -> have 1
 Misc -> speak 1
 Misc -> cover 1
@@ -271,18 +267,8 @@ Misc -> carry 1
 Misc -> suggest 1
 Misc -> migrate 1
 Misc -> south 1
-Misc -> know 1
 Misc -> that 1
-Misc -> what 1
-Misc -> which 1
-Misc -> what 1
-Misc -> who 1
-Misc -> whose 1
-Misc -> how 1
-Misc -> when 1
-Misc -> where 1
-Misc -> why 1
-Misc -> 's 1
+QS -> 's 1
 Adj -> bloody 5
 Adj -> weary 5
 Adj -> unable 5
@@ -330,10 +316,10 @@ WRB -> why 1
 WRB -> where 1
 WRB -> when 1
 WRB -> how 1
-WP$ -> whose 1
-WP -> who 1
+WP -> whose 1
+WP -> who 3
 WP -> what 1
-WDT -> which 1
+WP -> which 1
 VNoun -> having 1
 VNoun -> speaking 1
 VNoun -> covering 1
@@ -358,3 +344,23 @@ Adv -> precisely 1
 Adv -> successfully 1
 Adv -> unfortunately 1
 Adv -> south 1
+VBD -> had 1
+VBD -> spoke 1
+VBD -> covered 1
+VBD -> was 1
+VBD -> were 1
+VBD -> rode 1
+VBD -> drank 1
+VBD -> grew 1
+VBD -> carried 1
+VBD -> suggested 1
+VBD -> migrated 1
+VBD -> knew 1
+PRP$ -> her 1
+PRP$ -> his 1
+PRP$ -> its 1
+PRP$ -> their 1
+Connect -> that 1
+Connect -> so 1
+Connect -> while 1
+Connect -> because 1
