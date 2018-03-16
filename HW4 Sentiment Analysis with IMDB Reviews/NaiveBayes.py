@@ -47,8 +47,6 @@ class NaiveBayes:
         self.posDocumentCount = 0 # positive document count
         self.negDocumentCount = 0 # negative document count
         self.totalDocumentCount = 0 # total document count
-        # self.probPos = posDocumentCount / totalDocumentCount # p(c), c = positive sentiment
-        # self.probNeg = negDocumentCount / totalDocumentCount # p(c),  c = negative sentiment
         self.wordClassifierCount = collections.defaultdict(lambda: 0) # dictionary for word, classifer pair
         self.posWordCount = 0   # positive word count
         self.negWordCount = 0   # negative word count
@@ -60,29 +58,52 @@ class NaiveBayes:
         if self.stopWordsFilter:
             words = self.filterStopWords(words)
 
-        # TODO
-        # classify a list of words and return the 'pos' or 'neg' classification
-        # Write code here
+        # calculate probability for classifer
+        Ppos = float(self.posDocumentCount) / self.totalDocumentCount
+        Pneg = float(self.negDocumentCount) / self.totalDocumentCount
+        Cpos = -math.log(Ppos)
+        Cneg = -math.log(Pneg)
 
-        return 'pos'
+        # find the value in the dictionary and computer Cj
+        for word in words:
+             # get key for wordClassifierCount
+            posWordKey = word + 'pos' 
+            negWordKey = word + 'neg'
+
+            # update Cj value
+            if self.wordClassifierCount[posWordKey] > 0:
+                Cpos -= math.log(float(self.wordClassifierCount[posWordKey]) / self.posWordCount)
+            if self.wordClassifierCount[negWordKey] > 0:
+                Cneg -= math.log(float(self.wordClassifierCount[negWordKey]) / self.negWordCount)
+        
+        # return value
+        if Cpos > Cneg:
+            return 'pos'
+        return 'neg'
 
     def addDocument(self, classifier, words):
         """
         Train your model on a document with label classifier (pos or neg) and words (list of strings). You should
         store any structures for your classifier in the naive bayes class. This function will return nothing
         """
-        # TODO
         # counting positive and negative document number
-        if classifier == 'pos': self.posDocumentCount += 1
-        elif classifier == 'neg': self.negDocumentCount += 1
+        if classifier == 'pos': 
+            self.posDocumentCount += 1
+        elif classifier == 'neg': 
+            self.negDocumentCount += 1
         self.totalDocumentCount += 1 # counting total document number
 
         # loop through words in reviews to count positive and negative words
+        # print words
         for word in words:
-            self.wordClassifierCount[word+classifier] += 1
-            if classifier == 'pos': self.posWordCount += 1
-            elif classifier == 'neg': self.negWordCount += 1
-        pass
+            # self.wordClassifierCount[word + classifier] += 1
+            if classifier == 'pos': 
+                self.posWordCount += 1
+                self.wordClassifierCount[word + 'pos'] += 1
+                continue
+            if classifier == 'neg': 
+                self.negWordCount += 1
+                self.wordClassifierCount[word + 'neg'] += 1
 
     def readFile(self, fileName):
         """
@@ -253,8 +274,6 @@ def test10Fold(args, stopWordsFilter, naiveBayesBool, bestModel):
         # print("self.posDocumentCount", classifier.posDocumentCount)
         # print("self.negDocumentCount", classifier.negDocumentCount)
         # print("self.totalDocumentCount", classifier.totalDocumentCount)
-        # print("p(c), c = positive sentiment", float(classifier.posDocumentCount) / float(classifier.totalDocumentCount))
-        # print("p(c), c = negative sentiment", float(classifier.negDocumentCount) / float(classifier.totalDocumentCount))
         # print("self.posWordCount", classifier.posWordCount)
         # print("self.negWordCount", classifier.negWordCount)
         # print("self.wordClassifierCount", classifier.wordClassifierCount)
