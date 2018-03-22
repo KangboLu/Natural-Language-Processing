@@ -47,37 +47,64 @@ class NaiveBayes:
         self.posDocumentCount = 0 # positive document count
         self.negDocumentCount = 0 # negative document count
         self.totalDocumentCount = 0 # total document count
-        self.wordClassifierCount = collections.defaultdict(lambda: 0) # dictionary for word, classifer pair
         self.posWordCount = 0   # positive word count
         self.negWordCount = 0   # negative word count
+        self.wordPosCount = collections.defaultdict(lambda: 0) # dictionary for word, classifer pair
+        self.wordNegCount = collections.defaultdict(lambda: 0) # dictionary for word, classifer pair
+
+        self.V = 0
+        self.posWordDocCount = 0   # positive word count
+        self.negWordDocCount = 0   # negative word count
+        self.wordPosDocCount = collections.defaultdict(lambda: 0) # dictionary for word, classifer pair in document
+        self.wordNegDocCount = collections.defaultdict(lambda: 0) # dictionary for word, classifer pair in document
 
     def classify(self, words):
         """
         Classify a list of words and return a positive or negative sentiment
         """
-        if self.stopWordsFilter:
-            words = self.filterStopWords(words)
-
         # calculate probability for classifer
-        Ppos = float(self.posDocumentCount) / self.totalDocumentCount
-        Pneg = float(self.negDocumentCount) / self.totalDocumentCount
-        Cpos = -math.log(Ppos)
-        Cneg = -math.log(Pneg)
+        Ppos = float(self.posDocumentCount) / (self.totalDocumentCount)
+        Pneg = float(self.negDocumentCount) / (self.totalDocumentCount)
+        Cpos = math.log(Ppos)
+        Cneg = math.log(Pneg)
 
-        # find the value in the dictionary and computer Cj
-        for word in words:
-             # get key for wordClassifierCount
-            posWordKey = word + 'pos' 
-            negWordKey = word + 'neg'
+        # task 1, 2
+        if self.stopWordsFilter:
+            # find the value in the dictionary and computer Cj
+            words = self.filterStopWords(words)
+            for word in words:
+                # update Cj value
+                if self.wordPosCount[word] >= 0:
+                    Cpos += math.log(float(self.wordPosCount[word]+1) / (self.posWordCount + 1 * self.V))
+                if self.wordNegCount[word] >= 0:
+                    Cneg += math.log(float(self.wordNegCount[word]+1) / (self.negWordCount + 1 * self.V))
 
-            # update Cj value
-            if self.wordClassifierCount[posWordKey] > 0:
-                Cpos -= math.log(float(self.wordClassifierCount[posWordKey]) / self.posWordCount)
-            if self.wordClassifierCount[negWordKey] > 0:
-                Cneg -= math.log(float(self.wordClassifierCount[negWordKey]) / self.negWordCount)
-        
+        # task 3
+        if self.naiveBayesBool == True:
+            # find the value in the dictionary and computer Cj
+            words = set(words)
+            for word in words:      
+                # update Cj value
+                a = 4
+                if self.wordPosDocCount[word] >= 0:
+                    Cpos += math.log(float(self.wordPosDocCount[word] + a) / (self.posWordDocCount + a*self.V))
+                if self.wordNegDocCount[word] >= 0:
+                    Cneg += math.log(float(self.wordNegDocCount[word] + a) / (self.negWordDocCount + a*self.V))
+
+        # task 4
+        if self.bestModel == True:
+            # find the value in the dictionary and computer Cj
+            words = set(words)
+            for word in words:      
+                # update Cj value
+                a = 6.8
+                if self.wordPosDocCount[word] >= 0:
+                    Cpos += math.log(float(self.wordPosDocCount[word] + a) / (self.posWordDocCount + a*self.V))
+                if self.wordNegDocCount[word] >= 0:
+                    Cneg += math.log(float(self.wordNegDocCount[word] + a) / (self.negWordDocCount + a*self.V))
+
         # return value
-        if Cpos > Cneg:
+        if Cpos > Cneg: 
             return 'pos'
         return 'neg'
 
@@ -91,19 +118,34 @@ class NaiveBayes:
             self.posDocumentCount += 1
         elif classifier == 'neg': 
             self.negDocumentCount += 1
-        self.totalDocumentCount += 1 # counting total document number
+        self.totalDocumentCount += 1
 
-        # loop through words in reviews to count positive and negative words
-        # print words
-        for word in words:
-            # self.wordClassifierCount[word + classifier] += 1
-            if classifier == 'pos': 
-                self.posWordCount += 1
-                self.wordClassifierCount[word + 'pos'] += 1
-                continue
-            if classifier == 'neg': 
-                self.negWordCount += 1
-                self.wordClassifierCount[word + 'neg'] += 1
+        # task 1, 2 with add one smoothing 
+        if self.stopWordsFilter:
+            # loop through words in reviews to count positive and negative words
+            words = self.filterStopWords(words)
+            for word in words:
+                if word not in self.wordPosCount and word not in self.wordNegCount:
+                    self.V += 1
+                if classifier == 'pos': 
+                    self.posWordCount += 1
+                    self.wordPosCount[word] += 1
+                if classifier == 'neg': 
+                    self.negWordCount += 1
+                    self.wordNegCount[word] += 1
+
+        # task 3 binarized naive bayes
+        if self.naiveBayesBool or self.bestModel:
+            words = set(words)
+            for word in words:
+                if word not in self.wordPosDocCount and word not in self.wordNegDocCount:
+                    self.V += 1
+                if classifier == 'pos':
+                    self.posWordDocCount += 1 # increment n
+                    self.wordPosDocCount[word] += 1 # increment nk
+                if classifier == 'neg':
+                    self.negWordDocCount += 1 # increment n
+                    self.wordNegDocCount[word] += 1 # increment nk
 
     def readFile(self, fileName):
         """
@@ -269,14 +311,6 @@ def test10Fold(args, stopWordsFilter, naiveBayesBool, bestModel):
         for doc in split.train:
             words = doc.words
             classifier.addDocument(doc.classifier, words)
-
-        # TEST addDocument()
-        # print("self.posDocumentCount", classifier.posDocumentCount)
-        # print("self.negDocumentCount", classifier.negDocumentCount)
-        # print("self.totalDocumentCount", classifier.totalDocumentCount)
-        # print("self.posWordCount", classifier.posWordCount)
-        # print("self.negWordCount", classifier.negWordCount)
-        # print("self.wordClassifierCount", classifier.wordClassifierCount)
 
         for doc in split.test:
             words = doc.words
