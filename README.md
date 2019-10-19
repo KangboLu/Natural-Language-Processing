@@ -1,6 +1,6 @@
 # Natural-Language-Processing-Course
 * NLP course taught by [Zhou Yu](http://www.cs.cmu.edu/~zhouyu/) in UC Davis
-* Zhou Yu leads our Davis Team Gunrock was awarded $250,000 to compete in Amazon Alexa Prize.
+* Zhou Yu leads our Davis Team Gunrock was awarded $500,000 to compete in Amazon Alexa Prize.
 * Texbook: [Speech and Language Processing (3rd ed. draft) by Dan Jurafsky and James H. Martin](http://web.stanford.edu/~jurafsky/slp3/)
 
 ## HW 1: Spell Correction
